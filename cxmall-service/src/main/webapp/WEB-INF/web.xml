@@ -18,6 +18,11 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
+	<!--contextLoaderListener继承ServletContextLisener,web容器启动时自动装配applicationContext的配置信息-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    
 	<!--用于设置context的参数,如果不设置contextConfigLocation则默认的spring配置文件applicationContext.xml放在WEB-INF目录下 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>

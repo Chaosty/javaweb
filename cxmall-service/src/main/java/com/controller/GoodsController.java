@@ -2,6 +2,7 @@ package com.controller;
 
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -12,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.dao.GoodsDao;
 import com.databean.Goods;
-import com.service.*;
+import com.service.GoodsService;
+//import com.service.*;
 
 
 class Shop {
@@ -37,8 +39,13 @@ class Shop {
 @RequestMapping("Goods.do")
 public class GoodsController {
 
-	//@Resource
-	//private GoodsDao goodsDao;
+	@Resource
+	private GoodsService goodsService;
+	
+//	@Resource
+//	private GoodsDao goodsDao;
+//	@Resource
+//	private SqlSessionFactory sqlSessionFactory;
 	//	@RequestMapping(method = RequestMethod.GET)
 	//	public String printHello(ModelMap model) {
 	//		model.addAttribute("message", "Hello222 Spring MVC Framework!");
@@ -52,8 +59,10 @@ public class GoodsController {
 
 
 		//Goods goods = goodsDao.find("562379");
-		GoodsService service = new GoodsService();
-		Goods goods = service.findGood("562379");
+		//GoodsService service = new GoodsService();
+		//Goods goods = service.findGood("562379");
+		Goods goods = goodsService.findGood("562379");
+		
 		System.out.println(goods.getTitle());
 
 		System.out.println("-----请求json数据--------");
